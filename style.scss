@@ -1,0 +1,44 @@
+$font-mono: 'Ubuntu Mono', Monaco, 'Consolas';
+
+.description {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.compare {
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: #eee;
+}
+
+.lefthead {
+  flex-basis: 33%;
+  background: #ddd;
+}
+.righthead {
+  flex-basis: 67%;
+  text-align: right;
+}
+.left {
+  pre {
+    font-family: $font-mono;
+  }
+  display: flex;
+  justify-content: space-around;
+  background: #ddd;
+  flex-basis: 33%;
+}
+.right {
+  display: flex;
+  flex-basis: 67%;
+}
+
+.box {
+  width: 40px;
+  height: 40px;
+  background: tomato;
+  border: 1px solid #333;
+}

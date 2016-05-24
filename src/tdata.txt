@@ -1,0 +1,36 @@
+{% block markdown %}
+# Heading1
+
+## Heading2
+
+some list:
+
+  * one
+  * [two](https://google.com)
+  * `three`
+
+{% endblock %}
+
+{% block scss %}
+p {
+  font-size: 20px;
+}
+
+.right {
+  display: flex;
+}
+{% endblock %}
+
+{% block markdown %}
+> this is a quote
+
+{% endblock %}
+
+{% block scss %}
+a {
+  color: #ccc;
+}
+{% endblock %}
+
+{% block markdown %}
+{% endblock %}
