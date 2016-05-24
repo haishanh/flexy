@@ -34,3 +34,5 @@ a {
 
 {% block markdown %}
 {% endblock %}
+{% block scss %}
+{% endblock %}

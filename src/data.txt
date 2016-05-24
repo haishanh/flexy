@@ -1,0 +1,103 @@
+{% block markdown %}
+# Flexbox
+
+## 概念
+
+采用 Flex 布局的元素为 flex container，其中的所有子元素为 flex item。
+
+container 中有两根轴，一根叫主轴(main axis)，另外一根叫交叉轴(cross axis)。如果 container 采用横向布局，则水平方向为 main axis，垂直方向为 cross axis；如果 container 采用竖向布局，则垂直方向为 main axis，水平方向为 cross axis。
+
+flex container 有以下几种可以使用的 flex 属性
+
+  * flex-direction
+  * flex-wrap
+  * flex-flow
+  * justify-content
+  * align-items
+  * align-content
+
+## Container
+
+### `flex-direction`
+
+`flex-direction` 决定布局方向，也就是 main axis 的方向。
+
+可使用以下几个值：
+
+```css
+.container {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+```
+
+`row` 为横向布局，该值为默认值
+
+{% endblock %}
+
+{% block flex-direction-row %}
+.container {
+  flex-direction: row;
+}
+{% endblock %}
+
+{% block markdown %}
+
+`row-reverse` 为横向布局，但其中的 flex item 会反方向铺展开，起点也是从最右侧开始。
+
+{% endblock %}
+
+{% block flex-direction-row-reverse %}
+.container {
+  flex-direction: row-reverse;
+}
+{% endblock %}
+
+{% block markdown %}
+
+### `flex-wrap`
+
+当 container 的 main axis 上排不下所有的 flex item 时怎么办呢？ 属性 `flex-wrap` 就是来解决这个问题的，其可用值如下：
+
+```css
+.container {
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+```
+
+`nowrap` 为默认值，表示不换行。(如果是采用竖向布局，则表示不换列 :)
+
+{% endblock %}
+{% block flex-wrap-nowrap %}
+.container {
+  flex-wrap: nowrap;
+}
+{% endblock %}
+
+{% block markdown %}
+
+### `flex-flow`
+
+`flex-flow` 属性是 `flex-direction` 属性和 `flex-wrap` 属性的简写形式，默认值为 `row nowrap`
+
+```css
+.container {
+  flex-flow: <flex-direction> || <flex-wrap>;
+}
+```
+
+### `justify-content`
+
+`justify-content` 用于描述 flex item 在 container 的**主轴**上的对齐方式。
+
+```css
+.container {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+```
+
+{% endblock %}
+
+
+{% block flex-flow %}
+
+{% endblock %}

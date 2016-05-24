@@ -1,16 +1,16 @@
 'use strict';
 
 const gulp = require('gulp');
-const pug = require('gulp-pug');
+// To remove? const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
 const sassSrc = './*.scss';
 const pugSrc = 'src/index.pug';
-const pugDest = 'dest'
-const pugOpts = {
-  pretty: true
-};
+// const pugDest = 'dest'
+// const pugOpts = {
+//   pretty: true
+// };
 
 gulp.task('sass', () => {
   return gulp.src(sassSrc)
@@ -42,10 +42,14 @@ gulp.task('serve', ['sass'], () => {
 });
 
 
+// gulp.task('pug', () => {
+//   return gulp.src(pugSrc)
+//     .pipe(pug(pugOpts))
+//     .pipe(gulp.dest(pugDest));
+// });
+
 gulp.task('pug', () => {
-  return gulp.src(pugSrc)
-    .pipe(pug(pugOpts))
-    .pipe(gulp.dest(pugDest));
+  return require('./render')();
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['pug', 'serve']);

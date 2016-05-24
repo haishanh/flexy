@@ -7,7 +7,7 @@ const hljs = require('highlight.js');
 const OPEN = /{%\sblock\s(\w+)\s%}(?:\s+)?\n/g;
 const CLOSE = /{%\sendblock\s%}(?:\s+)?\n?/g;
 
-test();
+module.exports = populate;
 
 function test() {
   let cont = fs.readFileSync('src/tdata.txt', 'utf-8');
@@ -23,6 +23,45 @@ function test() {
   });
 }
 
+function populate(filename) {
+  let cont = fs.readFileSync(filename, 'utf-8');
+  let points = parseFile(cont);
+  let data = [];
+  let item;
+  let description, left;
+
+  // markdown opt
+  markdown.setOptions({
+    highlight: (code) => {
+      return hljs.highlightAuto(code).value;
+    }
+  });
+
+  for (let i = 0; i < points.length; i++) {
+
+
+    item = points[i];
+    if (item.type === 'markdown') {
+      description = markdown(
+        cont.substring(item.start, item.end).trim()
+      );
+    } else {
+      left = cont.substring(item.start, item.end).trim();
+    }
+
+
+
+    if (i % 2 === 1) {
+      data.push({
+        description,
+        left
+      });
+    }
+  }
+
+  return data;
+}
+
 function parseFile(cont) {
   let points = parseAllOpen(cont);
   let closePoints = parseAllClose(cont);
@@ -36,6 +75,9 @@ function parseFile(cont) {
     console.log(closePoints);
     process.exit(2);
   }
+
+  // TODO
+  // check mardkown/other should be interleaved
 
   for (let i = 0; i < points.length; i++) {
     points[i].end = closePoints[i].end;
