@@ -4,7 +4,7 @@ const fs = require('fs');
 const markdown = require('marked');
 const hljs = require('highlight.js');
 
-const OPEN = /{%\sblock\s(\w+)\s%}(?:\s+)?\n/g;
+const OPEN = /{%\sblock\s([-\w]+)\s%}(?:\s+)?\n/g;
 const CLOSE = /{%\sendblock\s%}(?:\s+)?\n?/g;
 
 module.exports = populate;
@@ -24,6 +24,7 @@ function test() {
 }
 
 function populate(filename) {
+  console.log('Reading file ' + filename);
   let cont = fs.readFileSync(filename, 'utf-8');
   let points = parseFile(cont);
   let data = [];
@@ -38,8 +39,6 @@ function populate(filename) {
   });
 
   for (let i = 0; i < points.length; i++) {
-
-
     item = points[i];
     if (item.type === 'markdown') {
       description = markdown(
@@ -48,8 +47,6 @@ function populate(filename) {
     } else {
       left = cont.substring(item.start, item.end).trim();
     }
-
-
 
     if (i % 2 === 1) {
       data.push({
