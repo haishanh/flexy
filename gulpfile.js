@@ -6,6 +6,7 @@ const sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
 const sassSrc = './*.scss';
+const dataSrc = 'src/data.txt';
 const pugSrc = 'src/index.pug';
 // const pugDest = 'dest'
 // const pugOpts = {
@@ -37,7 +38,7 @@ gulp.task('serve', ['sass'], () => {
   });
 
   gulp.watch(sassSrc, ['sass']);
-  gulp.watch(pugSrc, ['pug']);
+  gulp.watch([dataSrc, pugSrc], ['pug']);
   gulp.watch('dest/*.html').on('change', browserSync.reload);
 });
 

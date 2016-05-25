@@ -1,3 +1,10 @@
+mixin right_box(cls)
+  - var n = 1
+  //- var txts = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
+  .right.container(class=cls)
+    while n <= 8
+      .item= n++
+
 doctype html
 html
   head
@@ -5,16 +12,14 @@ html
     link(rel='stylesheet', href='style.css')
   body
     main
-      - var txts = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven']
+
       each item in data
         .description!= item.description
         .compare
-          //.lefthead
-          //  p CSS
-          //.righthead
-          //  p flexbox
+          //-.lefthead
+          //-  p CSS
+          //-.righthead
+          //-  p flexbox
           .left
             pre!= item.left
-          .right
-            each txt in txts
-              .box= txt
+          +right_box(item.className)

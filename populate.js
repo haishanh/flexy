@@ -28,8 +28,10 @@ function populate(filename) {
   let cont = fs.readFileSync(filename, 'utf-8');
   let points = parseFile(cont);
   let data = [];
+  let scss = '';
+  let one;
   let item;
-  let description, left;
+  let description, left, className;
 
   // markdown opt
   markdown.setOptions({
@@ -46,16 +48,32 @@ function populate(filename) {
       );
     } else {
       left = cont.substring(item.start, item.end).trim();
+      if (left) {
+        scss += '.' + item.type + '{\n';
+
+        one = left;
+
+        // dirty '&' injection
+        if (/^\.container/.test(left)) one = '&' + one;
+
+        // make it pretty in scss file
+        one = one.replace(/(^)/gm, '$1  ')
+
+        scss += one + '\n}\n\n';
+      }
+      className = item.type;
     }
 
     if (i % 2 === 1) {
       data.push({
         description,
-        left
+        left,
+        className
       });
     }
   }
 
+  fs.writeFileSync('_flexcomp.scss', scss, 'utf-8');
   return data;
 }
 
