@@ -63,6 +63,7 @@ function populate(filename) {
         scss += one + '\n}\n\n';
       }
       className = item.type;
+      left = hljs.highlight('css', left).value;
     }
 
     if (i % 2 === 1) {

@@ -1,0 +1,46 @@
+.description {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.compare {
+  width: 800px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background: #eee;
+}
+
+.lefthead {
+  flex-basis: 33%;
+  background: #ddd;
+}
+.righthead {
+  flex-basis: 67%;
+  text-align: right;
+}
+.left {
+  pre {
+    margin: 0;
+    background: none;
+  }
+  display: flex;
+  justify-content: flex-start;
+  background: #ddd;
+  flex-basis: 33%;
+}
+.right {
+  display: flex;
+  flex-basis: 67%;
+  background: #70F770;
+}
+
+.item {
+  //width: 40px;
+  //height: 40px;
+  background: tomato;
+  border: 1px solid #333;
+}
+
+@import '_flexcomp'
