@@ -3,12 +3,105 @@
 const fs = require('fs');
 const markdown = require('marked');
 const hljs = require('highlight.js');
+const _ = require('lodash');
 
 const OPEN = /{%\sblock\s([-\w]+)\s%}(?:\s+)?\n/g;
 const CLOSE = /{%\sendblock\s%}(?:\s+)?\n?/g;
 const scssOutputFile = 'src/scss/_flexcomp.scss';
 
 module.exports = populate;
+
+// global
+var headings = [];
+var renderer = new markdown.Renderer();
+
+/**
+ * overwrite default heading renderer of `marked`
+ */
+renderer.heading = (text, level) => {
+  let sepIndex = text.indexOf('|');
+  let content;
+  let colBreak = false;
+  let id;
+  if (sepIndex > 0) {
+    content = text.substring(0, sepIndex).trim();
+    id = text.substring(sepIndex+1).trim();
+  } else {
+    content = text;
+    id = text;
+  }
+
+  let escapedText = id.toLowerCase().replace(/[^\w]+/g, '-');
+
+  headings.push({
+    level,
+    text: '<a name="' + escapedText +
+          '" href="#' + escapedText + '">' +
+          content + '</a>'
+  });
+
+  return '<h' + level + ' id="' +
+          escapedText + '"' + '><a name="' +
+          escapedText +
+          '" class="anchor" href="#' +
+          escapedText +
+          '">#</a>' +
+          content + '</h' + level + '>';
+};
+
+/**
+ * parsing headings to ul > li tree
+ *
+ * @param headings {Array}
+ * @param n {Number} the largest level of headings want to keep
+ * @return {String} html string of ul > li tree
+ */
+function genToc(headings, n) {
+  n = n || 3;
+  let pre = 1;
+  let topLevel = 2;
+  let closeTags = [];
+  let out = '';
+  let hl = _(headings);
+  hl
+    .filter((h) => {
+      return h.level <= n;
+    })
+    .map((h) => {
+      let dif = h.level - pre;
+      pre = h.level;
+      if (h.level === topLevel) {
+        closeTags.forEach((tag) => {
+         out += tag;
+        });
+        out += '<ul class="top-level"><li>';
+        closeTags.push('</li></ul>');
+      } else if (dif > 0) {
+        for(let i = 0; i < dif; i++) {
+          out += '<ul><li>';
+          closeTags.push('</li></ul>');
+        }
+      } else if (dif < 0) {
+        dif = - dif;
+        for(let i = 0; i < dif; i++) {
+          out += closeTags.pop();
+        }
+        out += '</li><li>';
+      } else {
+        out += '</li><li>';
+      }
+
+      out += h.text;
+    })
+    .value();
+
+  /* in case there is none closed tag */
+  closeTags.forEach((tag) => {
+    out += tag;
+  });
+
+  return out;
+}
 
 function test() {
   let cont = fs.readFileSync('src/tdata.txt', 'utf-8');
@@ -32,10 +125,14 @@ function populate(filename) {
   let scss = '';
   let one;
   let item;
+  let toc;
   let description, left, className;
+
+  headings = [];
 
   // markdown opt
   markdown.setOptions({
+    renderer,
     highlight: (code) => {
       return hljs.highlightAuto(code).value;
     }
@@ -76,7 +173,10 @@ function populate(filename) {
   }
 
   fs.writeFileSync(scssOutputFile, scss, 'utf-8');
-  return data;
+  return {
+    data,
+    toc: genToc(headings, 5)
+  };
 }
 
 function parseFile(cont) {

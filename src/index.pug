@@ -12,14 +12,16 @@ html
     link(rel='stylesheet', href='style.css')
   body
     main
+      .toc!= toc
 
-      each item in data
-        .description!= item.description
-        .compare
-          //-.lefthead
-          //-  p CSS
-          //-.righthead
-          //-  p flexbox
-          .left
-            pre!= item.left
-          +right_box(item.className)
+      article
+        each item in data
+          .description!= item.description
+          .compare
+            //-.lefthead
+            //-  p CSS
+            //-.righthead
+            //-  p flexbox
+            .left
+              pre!= item.left
+            +right_box(item.className)

@@ -17,9 +17,8 @@ function renderPug() {
   let pugOpts = {
     pretty: true
   };
-  let locals = {
-    data: populate(dataFile)
-  };
+
+  let locals = populate(dataFile);
 
   let fn =  pug.compileFile(inputFile, pugOpts);
   let html = fn(locals)

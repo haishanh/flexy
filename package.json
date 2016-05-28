@@ -15,6 +15,7 @@
     "gulp-pug": "^3.0.2",
     "gulp-sass": "^2.3.1",
     "highlight.js": "^9.4.0",
+    "lodash": "^4.13.1",
     "marked": "^0.3.5",
     "pug": "^2.0.0-alpha8"
   }
