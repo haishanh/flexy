@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 
-const sassSrc = './*.scss';
+const sassSrc = 'src/scss/**/*.scss';
 const dataSrc = 'src/data.txt';
 const pugSrc = 'src/index.pug';
 // const pugDest = 'dest'

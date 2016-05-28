@@ -6,6 +6,7 @@ const hljs = require('highlight.js');
 
 const OPEN = /{%\sblock\s([-\w]+)\s%}(?:\s+)?\n/g;
 const CLOSE = /{%\sendblock\s%}(?:\s+)?\n?/g;
+const scssOutputFile = 'src/scss/_flexcomp.scss';
 
 module.exports = populate;
 
@@ -73,7 +74,7 @@ function populate(filename) {
     }
   }
 
-  fs.writeFileSync('_flexcomp.scss', scss, 'utf-8');
+  fs.writeFileSync(scssOutputFile, scss, 'utf-8');
   return data;
 }
 
