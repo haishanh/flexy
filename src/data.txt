@@ -1,9 +1,18 @@
 {% block markdown %}
 
-## Before
+关于 flexbox，网上有着非常多的文章。比如：
 
-[草案][flex-draft]
+  * [A Complete Guide to Flexbox][css-tricks-flex]
+  * [Getting Dicey With Flexbox][dicey]
+  * [Flex 布局教程：语法篇][ryf-flex1]
+  * [Flex 布局教程：实例篇][ryf-flex2]
 
+那为什么我还要写呢，因为 flexbox 真的很有用很好用啊 :) 有疑问的时候可以查一下 flexbox 的[草案][flex-draft]
+
+[css-tricks-flex]: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+[dicey]: https://davidwalsh.name/flexbox-dice
+[ryf-flex1]: http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+[ryf-flex2]: http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
 [flex-draft]: https://drafts.csswg.org/css-flexbox-1/
 
 ## 基本概念 | Basic Concept
@@ -28,7 +37,7 @@ flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局�
 
 **cross size**: 与 *main size* 类似。如果是横向布局，则 *cross size* 指 **高度**，如果是竖向布局，则 *cross size* 是指 **宽度**。
 
-flex container 和 flex item 都有有些 flex 相关的属性可以使用。
+flex container 和 flex item 都有一些 flex 相关的属性可以使用。
 
 需要说明的是，本文所有例子中右侧的 demo 区域，都已经使用了以下 html 结构：
 
@@ -59,7 +68,7 @@ flex container 和 flex item 都有有些 flex 相关的属性可以使用。
 }
 ```
 
-## container
+## container属性 | container
 
 **flex container** 有以下几种 flex 属性可以使用
 
@@ -500,7 +509,7 @@ flex container 和 flex item 都有有些 flex 相关的属性可以使用。
 
 {% block markdown %}
 
-## item
+## item属性 | item
 
 flexbox 中的 item 也有着相关的 flex 属性。
 
@@ -688,4 +697,14 @@ flexbox 中的 item 也有着相关的 flex 属性。
   font-size: 25px;
   align-self: baseline;
 }
+{% endblock %}
+
+==
+
+{% block markdown %}
+
+以上就是所有内容了，怎么样，会用了没。
+
+{% endblock %}
+{% block none %}
 {% endblock %}
