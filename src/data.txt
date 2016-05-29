@@ -1,5 +1,4 @@
 {% block markdown %}
-# Flexbox
 
 ## Before
 
@@ -7,33 +6,62 @@
 
 [flex-draft]: https://drafts.csswg.org/css-flexbox-1/
 
-## 概念
+## 基本概念 | Basic Concept
 
-采用 flex 布局的元素为 flex container，其中的所有子元素为 flex item。
+采用 flex 布局的元素为 **flex container**(也叫做 flexbox)，其中的所有子元素为 **flex item**。
 
-对于 div 类元素设置 `display` 属性为`flex`（或者是对 span 类元素设置 `display` 属性为 `inline-flex`），就可以将其设置为 flex container，其中子元素也就自动变成 flex item 了。
+将元素的 `display` 属性设置为`flex` 或者为 `inline-flex` 就可以将一个元素设置成 flex container，其中子元素也就自动变成 flex item 了。（如果是设置成 `flex` 这个 container 就是 block 级别的，如果是 `inline-flex` 则是 inline 级别的。）
 
-flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局。两种不同的布局方式，会决定其他 flex 属性的效果。
+flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局，默认是横向布局。两种不同的布局方式，会决定其他 flex 属性的效果。
 
-![](https://drafts.csswg.org/css-flexbox-1/images/flex-direction-terms.svg)
+![](https://developer.mozilla.org/files/3739/flex_terms.png)
 
-*main axis*: 是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 *x* 轴一致，如果采用竖向布局，则 *main axis* 与 *y* 轴一致。
+**main axis**: 是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 *x* 轴一致，如果采用竖向布局，则 *main axis* 与 *y* 轴一致。
 
-*corss axis*: 是 flex container 的交叉轴，与主轴垂直。
+**corss axis**: 是 flex container 的交叉轴，与主轴垂直。
 
-*main-start* / *main-end*: 分别是 flex container 主轴的起始边和终点边。默认情况下，flex item 从 *main-start* 向 *main-end* 方向排列。
+**main-start** / **main-end**: 分别是 flex container 主轴的起始边和终点边。默认情况下，flex item 从 *main-start* 向 *main-end* 方向排列。
 
-*cross-start* / *cross-end*: 分别是 flex container **交叉轴**的起始边和终点边。默认情况下，flex item 在交叉轴方向上会占满 *cross-start* 和 *cross-end* 之间的空间。
+**cross-start** / **cross-end**: 分别是 flex container **交叉轴**的起始边和终点边。默认情况下，flex item 在交叉轴方向上会占满 *cross-start* 和 *cross-end* 之间的空间。
 
-*main size*: 指 flex **item** 的 **宽度** 或 **高度**，如果是横向布局，则 *main size* 是指 **宽度**，如果是竖向布局，则 *main size* 是指 **高度**。
+**main size**: 指 flex **item** 的 **宽度** 或 **高度**，如果是横向布局，则 *main size* 是指 **宽度**，如果是竖向布局，则 *main size* 是指 **高度**。
 
-*cross size*: 与 *main size* 类似。如果是横向布局，则 *cross size* 指 **高度**，如果是竖向布局，则 *cross size* 是指 **宽度**。
+**cross size**: 与 *main size* 类似。如果是横向布局，则 *cross size* 指 **高度**，如果是竖向布局，则 *cross size* 是指 **宽度**。
 
-/ **
+flex container 和 flex item 都有有些 flex 相关的属性可以使用。
 
-container 中有两根轴，一根叫主轴(main axis)，另外一根叫交叉轴(cross axis)。如果 container 采用横向布局，则水平方向为 main axis，垂直方向为 cross axis；如果 container 采用竖向布局，则垂直方向为 main axis，水平方向为 cross axis。
+需要说明的是，本文所有例子中右侧的 demo 区域，都已经使用了以下 html 结构：
 
-flex container 有以下几种可以使用的 flex 属性
+```html
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+  <div class="item">7</div>
+  <div class="item">8</div>
+</div>
+```
+
+并且使用了以下 style:
+
+```css
+.container {
+  display: flex;
+  background: #70F770;
+}
+
+.item {
+  background: tomato;
+  border: 1px solid #333;
+}
+```
+
+## container
+
+**flex container** 有以下几种 flex 属性可以使用
 
   * flex-direction
   * flex-wrap
@@ -42,11 +70,11 @@ flex container 有以下几种可以使用的 flex 属性
   * align-items
   * align-content
 
-## Container
+下面会对每个属性进行说明，并给出例子。
 
-### `flex-direction`
+### flex-direction
 
-`flex-direction` 决定布局方向，也就是 main axis 的方向。
+`flex-direction` 决定布局方向，也就是 *main axis* 的方向。
 
 可使用以下几个值：
 
@@ -56,7 +84,7 @@ flex container 有以下几种可以使用的 flex 属性
 }
 ```
 
-`row` 为横向布局，该值为默认值
+`flex-direction: row` 为横向布局，该值为默认值。下面的例子中可以看到，这8个 item 是横向排开的。
 
 {% endblock %}
 
@@ -68,7 +96,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`row-reverse` 为横向布局，但其中的 flex item 会反方向铺展开，起点也是从最右侧开始。
+`flex-direction: row-reverse` 为横向布局，但其中的 flex item 会反方向铺展开，起点也是从最右侧(**main end**)开始。
 
 {% endblock %}
 
@@ -80,7 +108,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`column` 为竖向布局。
+`column` 为竖向布局
 
 {% endblock %}
 
@@ -92,7 +120,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`column-reverse` 竖向布局。与 `row-reverse` 类似，其中的 flex item 也会发反方向铺展开来，起点在下测。
+`column-reverse` 竖向布局。与 `row-reverse` 类似，其中的 flex item 也会发反方向铺展开来，起点在下侧(**main end**)。
 
 {% endblock %}
 
@@ -105,9 +133,9 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-### `flex-wrap`
+### flex-wrap
 
-当 container 的 main axis 上排不下所有的 flex item 时怎么办呢？ 属性 `flex-wrap` 就是来解决这个问题的，这个属性可以用来决定排不下的 item 是不是要换行或者换列。其可用值如下：
+当 container 的 *main axis* 上排不下所有的 flex item 时怎么办呢？ 属性 `flex-wrap` 就是来解决这个问题的，这个属性可以用来决定排不下的 item 是不是要换行或者换列。其可用值如下：
 
 ```css
 .container {
@@ -117,7 +145,9 @@ flex container 有以下几种可以使用的 flex 属性
 
 `nowrap` 为默认值，表示不换行。(如果是采用竖向布局，则表示不换列 :)
 
-如果 `item` 在主轴上排不下，比如下面的例子中，container 使用了 `column` 方向排序，内部的所有 item 的 height 加在一起已经超过了 containter 的可用高度了。但是因为 `flex-wrap` 的值为 `nowrap` 所以并不会换列。
+如果 `item` 在主轴上排不下，比如下面的例子中，container 使用了 `column` 方向排序，内部的所有 item 因为 `min-height` 设置为 `40px`了，所有 item 的高度加在一起已经超过了 containter 的可用高度了。但是因为 `flex-wrap` 的值为 `nowrap` 所以并不会换列。
+
+**注意：**下面的例子中，`flex-directin: column`，所以采用的是竖向布局，就是说 *main axis* 会是 *y* 方向。
 
 {% endblock %}
 {% block flex-wrap-nowrap %}
@@ -127,7 +157,7 @@ flex container 有以下几种可以使用的 flex 属性
 }
 
 .item {
-  min-height: 25px;
+  min-height: 40px;
   width: 30px;
 }
 {% endblock %}
@@ -154,7 +184,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`wrap-reverse`
+`wrap-reverse` 时，行为会与值为 `wrap` 时一样。但是排列时，值为 `wrap` 排列会从交叉轴(*corss axis*)的 *cross start* 开始，而值为 `wrap-reverse` 时，排列会从交叉轴的 *cross end* 开始
 
 {% endblock %}
 {% block flex-wrap-wrap-reverse %}
@@ -173,7 +203,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-### `flex-flow`
+### flex-flow
 
 `flex-flow` 属性是 `flex-direction` 属性和 `flex-wrap` 属性的简写形式，默认值为 `row nowrap`
 
@@ -183,9 +213,9 @@ flex container 有以下几种可以使用的 flex 属性
 }
 ```
 
-### `justify-content`
+### justify-content
 
-`justify-content` 用于描述 flex item 及其之间的"空格"在 container 的**主轴**上的对齐方式。
+`justify-content` 用于描述 flex item 及其之间的"空闲空间"在 container **主轴**上的对齐方式。
 
 ```css
 .container {
@@ -231,7 +261,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`space-between` 则表示 container 中主轴上的所有“空格”会均匀分布到 item 之间。
+`space-between` 则表示 container 中主轴上的所有“空闲空间”会均匀分布到 item **之间**。
 
 {% endblock %}
 {% block justify-content-space-between %}
@@ -243,7 +273,9 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-`space-around` 则表示 container 中主轴上的所有“空格”会均匀分布到 item 的**两侧**。
+`space-around` 则表示 container 中主轴上的所有“空闲空间”会均匀分布到 item 的**两侧**。
+
+下面的例子中，1的左边有“一份”空间，右边也有“一份”空间。2的左边和右边也同样有“一份”空间，所以可以看到1左边有“一份”空关键，而1和2之间是有“两份”的。
 
 {% endblock %}
 {% block justify-content-space-around %}
@@ -253,14 +285,10 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% endblock %}
 
-
-
-
-
-
+===
 
 {% block markdown %}
-## `align-items`
+### align-items
 
 `align-items` 属性决定 container 中的 item 在 **交叉轴cross axis** 上是如何分布的。
 
@@ -272,7 +300,9 @@ flex container 有以下几种可以使用的 flex 属性
 }
 ```
 
-`flex-start`表示对其到 交叉轴croass axis 的起始边(cross-start margin)。
+`flex-start`表示对其到 交叉轴 croass axis 的起始边(**cross start**)。
+
+下面的例子没有指定`flex-direction`，所以默认为横向布局。
 
 {% endblock %}
 {% block align-items-flex-start %}
@@ -283,7 +313,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 
 {% block markdown %}
-`flex-end`表示对其到 交叉轴croass axis 的终点边(cross-end margin)。
+`flex-end`表示对其到 交叉轴croass axis 的终点边(**cross end**)。
 
 {% endblock %}
 {% block align-items-flex-end %}
@@ -303,10 +333,10 @@ flex container 有以下几种可以使用的 flex 属性
 }
 {% endblock %}
 
-
+===
 
 {% block markdown %}
-`baseline`表示按照 item 的基线对齐。
+`baseline`表示按照 item 中文字的基线对齐。
 
 {% endblock %}
 {% block align-items-baseline %}
@@ -323,30 +353,27 @@ flex container 有以下几种可以使用的 flex 属性
 }
 
 .item:nth-child(4) {
-  font-size: 12px;
+  font-size: 50px;
 }
 {% endblock %}
 
+===
 
 {% block markdown %}
-`stretch` 是默认值，如果 item 在的 height 没指明的话， item 会伸展开来，cross axis 方向填满。
+`stretch` 是默认值，如果 item 的 *cross size* (横向布局时，即高度)没指明的话， item 会伸展开来，*cross axis* 方向填满。
 
 {% endblock %}
 {% block align-items-stretch %}
 .container {
   align-items: stretch;
 }
-
-.item {
-  height: auto;
-}
 {% endblock %}
 
 
 
 {% block markdown %}
 
-### `align-content`
+### align-content
 
 `align-content` 这个属性只有在 item 排成多行(`flex-direction` 是横向)或者多列(`flex-direction` 是竖向)的时候才生效。它决定这多行/多列的 item 整体上在 cross axis 上的分布方式。
 
@@ -358,45 +385,58 @@ flex container 有以下几种可以使用的 flex 属性
 }
 ```
 
-`flex-start` 表示所有 item 整体上分布在 cross axis 的起始位置
+`flex-start` 表示所有 item 整体上分布在 *cross axis* 的起始位置(cross start)
+
+下面的例子中，因为 item 设置了 `min-width`， container 上 `flex-wrap` 设置为 `wrap` 所以会换行。
 
 {% endblock %}
 {% block align-content-flex-start %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
 }
+
+.item {
+  min-width: 85px;
+}
 {% endblock %}
 
-
-
+===
 
 {% block markdown %}
 
-`flex-end` 表示所有 item 整体上分布在 cross axis 的末尾位置
+`flex-end` 表示所有 item 整体上分布在 *cross axis* 的末尾位置(cross end)
 
 {% endblock %}
 {% block align-content-flex-end %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-end;
 }
+
+.item {
+  min-width: 85px;
+}
 {% endblock %}
 
-
+===
 
 {% block markdown %}
 
-`center` 表示所有 item 整体上在 cross axis 的中线上对齐
+`center` 表示所有 item 整体上在 *cross axis* 的中线上对齐
 
 {% endblock %}
 {% block align-content-center %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.item {
+  min-width: 85px;
 }
 {% endblock %}
 
@@ -409,9 +449,13 @@ flex container 有以下几种可以使用的 flex 属性
 {% endblock %}
 {% block align-content-space-between %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: space-between;
+}
+
+.item {
+  min-width: 85px;
 }
 {% endblock %}
 
@@ -424,9 +468,13 @@ flex container 有以下几种可以使用的 flex 属性
 {% endblock %}
 {% block align-content-space-around %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   align-content: space-around;
+}
+
+.item {
+  min-width: 85px;
 }
 {% endblock %}
 
@@ -435,34 +483,35 @@ flex container 有以下几种可以使用的 flex 属性
 
 `stretch` 是默认值， 表示**每**行/列都将会自由拉伸开，cross axis 上占用整个空间。
 
-当然拉伸的前提是，这个 item 在这个维度上的 size 没有作限制，比如下面例子中，第 3 个 item 限制了  `width` 则它不会 stretch。
-
 {% endblock %}
 {% block align-content-stretch %}
 .container {
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-content: stretch;
 }
 
 .item {
-  width: auto;
-}
-
-.item:nth-child(3) {
-  width: 50px;
+  min-width: 85px;
 }
 {% endblock %}
 
-
-
-
-
+===
 
 {% block markdown %}
 
 ## item
 
-### `order`
+flexbox 中的 item 也有着相关的 flex 属性。
+
+  * order
+  * flex-grow
+  * flex-shrink
+  * flex-basis
+  * flex
+  * align-self
+
+### order
 
 默认情况下，flex item 在 container 中分布时会按照 html 代码中的顺序。但我们也可以使用 `order` 属性来控制 item 的分布顺序。
 
@@ -471,7 +520,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 ```css
 .item {
-  order: <integer>;
+  order: <integer>; /* default 0 */
 }
 ```
 
@@ -492,21 +541,24 @@ flex container 有以下几种可以使用的 flex 属性
 }
 {% endblock %}
 
-
-
+===
 
 {% block markdown %}
-### `flex-grow`
+### flex-grow
 
 `flex-grow` 属性决定这个 item 所占空间比例
 
-其值是一个不小于0的数字，注意该值并不是作为百分比来解释。默认值是0。
+其值是一个不小于0的数字，注意该值并不是作为百分比来解释。默认值是`0`。
 
 ```css
 .item {
   flex-grow: <number>; /* default 0 */
 }
 ```
+
+**`flex-grow` 是如何工作的？** flexbox 中的 item 在 *main axis* 上的尺寸首先由其 `flex-basis` 属性(该属性后面会进行描述)决定，假设这时 *main axis* 上还有“空闲空间”的话，就把这些空间分给使用了 `flex-grow` 属性的那些 item，`flex-grow` 的值就是它们额外可以拿到的空间的**份数**。
+
+假设只有一个 item 使用了 `flex-grow` 属性，则其值是 `1` 还是 `100`，其结果会是一样的，因为只有这一个 item 去分多余的“空闲空间”。
 
 {% endblock %}
 {% block flex-grow %}
@@ -527,9 +579,9 @@ flex container 有以下几种可以使用的 flex 属性
 ===
 
 {% block markdown %}
-### `flex-shrink`
+### flex-shrink
 
-`flex-shrink` 属性决定这个 item 收缩的比例，默认值是1。
+`flex-shrink` 属性决定空间不足时这个 item 收缩的比例，默认值是1。
 
 ```css
 .item {
@@ -540,8 +592,8 @@ flex container 有以下几种可以使用的 flex 属性
 {% endblock %}
 {% block flex-shrink %}
 .item {
-  min-width: 100px;
-  flex-grow: 1;
+  flex-basis: 190px;
+  flex-shrink: 1;
 }
 
 .item:nth-child(3) {
@@ -549,7 +601,7 @@ flex container 有以下几种可以使用的 flex 属性
 }
 
 .item:nth-child(5) {
-  flex-shrink: 1;
+  flex-shrink: 0;
 }
 {% endblock %}
 
@@ -557,7 +609,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-### `flex-basis`
+### flex-basis
 
 `flex-basis` 表示**在分配空闲空间之前** item 的 main size 的初始大小。
 
@@ -582,7 +634,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 {% block markdown %}
 
-### `flex`
+### flex
 
 `flex` 是 `flex-grow`, `flex-shrink`, `flex-basis` 三个属性的简写形式。
 
@@ -604,16 +656,7 @@ flex container 有以下几种可以使用的 flex 属性
 
 等价与 `flex: <positive-number> 1 0`。该 item 会完全按照指定的比例去使用空闲空间。
 
-{% endblock %}
-
-{% block flex %}
-{% endblock %}
-
-===
-
-{% block markdown %}
-
-### `align-self`
+### align-self
 
 `align-self` 属性可以用来设置该 item 在 cross axis 上的对齐方式，用来覆盖在 flex container 上的相关属性设置。
 
