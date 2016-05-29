@@ -1,0 +1,15 @@
+main
+  .toc!= toc
+
+  article
+    each item in data
+      .description!= item.description
+      - if (item.className !== 'none')
+        .compare
+          //-.lefthead
+          //-  p CSS
+          //-.righthead
+          //-  p flexbox
+          .left
+            pre!= item.left
+          +right_box(item.className)
