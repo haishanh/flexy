@@ -1,5 +1,8 @@
+$color-link: #1e79e0;
+$color-link-hover: #e42b2b;
+
 .description {
-  width: 600px;
+  width: 700px;
   margin: 0 auto;
 }
 
@@ -8,8 +11,7 @@
   height: 300px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-  background: #eee;
+  justify-content: flex-start;
 }
 
 .lefthead {
@@ -27,12 +29,12 @@
   }
   display: flex;
   justify-content: flex-start;
-  background: #ddd;
-  flex-basis: 33%;
+  background: rgba(0,0,0,0.08);
+  flex: 0 0 33%;
 }
 .right {
   display: flex;
-  flex-basis: 67%;
+  flex:0 0 67%;
   background: #70F770;
 }
 
@@ -43,11 +45,72 @@
   border: 1px solid #333;
 }
 
+body {
+  background: #efede4;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  &:hover {
+    span {
+      color: red;
+    }
+  }
+}
+
+// intro
+.intro {
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px 0;
+  h1 {
+    font-weight: 100;
+    text-align: center;
+    font-size: 45px;
+    margin: 0;
+  }
+  .red {
+    color: #c00;
+  }
+  .blue {
+    color: #00c;
+  }
+}
+
+// header anchor
+
+h2, h3 {
+  position: relative;
+  .anchor {
+    color: #0cc;
+    position: absolute;
+    left: -1em;
+  }
+}
+
+// image
+
+p > img {
+  display: block;
+  margin: 0 auto;
+}
+
+// link
+
+a {
+  color: $color-link;
+  &:hover {
+    text-decoration: none;
+    color: $color-link-hover;
+  }
+}
+
 .toc {
   display: none;
   position: fixed;
   width: 200px;
-  top: 100px;
+  top: 140px;
   left: 0;
   li {
     list-style: none;
@@ -58,6 +121,12 @@
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     padding-left: 1em;
+  }
+  a {
+    color: #333;
+    &:hover {
+      color: $color-link-hover;
+    }
   }
 }
 
