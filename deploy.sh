@@ -5,7 +5,7 @@
 # contents to github pages
 # actually not restrict to github pages
 
-SUBDIR=$(pwd)
+SUBDIR=$(basename $PWD)
 DIR=/tmp/${SUBDIR}/.deploy_git
 GIT=git
 BNAME=$(basename $0)
