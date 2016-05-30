@@ -66,9 +66,9 @@ footer {
   width: 700px;
   margin: 0 auto;
   padding: 20px 0;
+  text-align: center;
   h1 {
     font-weight: 100;
-    text-align: center;
     font-size: 45px;
     margin: 0;
   }
@@ -113,6 +113,22 @@ a {
   &:hover {
     text-decoration: none;
     color: $color-link-hover;
+  }
+}
+
+.forkme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  margin-top: 25px;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 10px;
+  &:hover {
+    background: #fff;
+    color: #000;
   }
 }
 
