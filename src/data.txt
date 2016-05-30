@@ -7,13 +7,16 @@
   * [Flex 布局教程：语法篇][ryf-flex1]
   * [Flex 布局教程：实例篇][ryf-flex2]
 
-那为什么我还要写呢，因为 flexbox 真的很有用很好用啊 :) 有疑问的时候可以查一下 flexbox 的[草案][flex-draft]
+那为什么我还要写呢，因为 flexbox 真的很有用很好用啊 :)
+
+有疑问的时候可以查一下 flexbox 的[草案][flex-draft]，或者[找我][hs-twitter]交流啊。
 
 [css-tricks-flex]: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 [dicey]: https://davidwalsh.name/flexbox-dice
 [ryf-flex1]: http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 [ryf-flex2]: http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
 [flex-draft]: https://drafts.csswg.org/css-flexbox-1/
+[hs-twitter]: https://twitter.com/carlhan
 
 ## 基本概念 | Basic Concept
 
