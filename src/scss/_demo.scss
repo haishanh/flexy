@@ -122,8 +122,10 @@ a {
   width: 180px;
   top: 140px;
   left: 0;
+  font-weight: 300;
   li {
     list-style: none;
+    line-height: 25px;
   }
   ul {
     margin: 0;
@@ -136,6 +138,9 @@ a {
     color: #333;
     &:hover {
       color: $color-link-hover;
+    }
+    &.active {
+      color: #0cc;
     }
   }
 }

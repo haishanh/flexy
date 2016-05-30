@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 // To remove? const pug = require('gulp-pug');
 const sass = require('gulp-sass');
+const concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 
 const sassSrc = 'src/scss/**/*.scss';
@@ -51,6 +52,12 @@ gulp.task('serve', ['sass'], () => {
 
 gulp.task('pug', () => {
   return require('./render')();
+});
+
+gulp.task('concatjs', () => {
+  return gulp.src(['src/gumshoe.min.js', 'src/demo.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('dest/'));
 });
 
 gulp.task('default', ['pug', 'serve']);
