@@ -4,6 +4,7 @@ $color-link-hover: #e42b2b;
 .description {
   width: 700px;
   margin: 0 auto;
+  padding-top: 25px;
 }
 
 .compare {
@@ -46,6 +47,7 @@ $color-link-hover: #e42b2b;
 }
 
 body {
+  font-family: $font-chn;
   background: #efede4;
 }
 
@@ -89,6 +91,14 @@ h2, h3 {
   }
 }
 
+h2, h2 .anchor {
+  line-height: 30px;
+}
+
+h3, h3 .anchor {
+  line-height: 20px;
+}
+
 // image
 
 p > img {
@@ -109,7 +119,7 @@ a {
 .toc {
   display: none;
   position: fixed;
-  width: 200px;
+  width: 180px;
   top: 140px;
   left: 0;
   li {
