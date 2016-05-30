@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "./deploy.sh dest git@github.com:haishanh/flexy.git gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

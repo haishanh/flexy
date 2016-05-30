@@ -60,4 +60,10 @@ gulp.task('concatjs', () => {
     .pipe(gulp.dest('dest/'));
 });
 
-gulp.task('default', ['pug', 'serve']);
+gulp.task('move', () => {
+  return gulp.src('src/CNAME')
+    .pipe(gulp.dest('dest'));
+});
+
+gulp.task('build', ['move', 'concatjs', 'pug', 'sass']);
+gulp.task('default', ['move', 'concatjs', 'pug', 'serve']);
