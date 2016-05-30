@@ -2,7 +2,7 @@
 
 const pug = require('pug');
 const fs = require('fs');
-const inputFile = 'src/index.pug';
+const inputFile = 'src/pug/index.pug';
 const outputFile = 'dest/index.html'
 const populate = require('./populate');
 const dataFile = 'src/data.txt';

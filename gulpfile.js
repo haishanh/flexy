@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create();
 
 const sassSrc = 'src/scss/**/*.scss';
 const dataSrc = 'src/data.txt';
-const pugSrc = 'src/**/*.pug';
+const pugSrc = 'src/pug/*.pug';
 // const pugDest = 'dest'
 // const pugOpts = {
 //   pretty: true
