@@ -1,14 +1,15 @@
 (function () {
   gumshoe.init({
     selector: '.toc a',
-    selectorHeader: '.toc',
     offset: 0,
     activeClass: 'active',
     callback: function (nav) { // copy from https://swift.org
-      var title = document.title + " - " + nav.target.textContent
-      var hash = "#" + nav.target.id;
-      if (window.location.hash !== hash) {
-        history.replaceState(null, title, window.location.pathname + hash);
+      if (nav) {
+        var title = document.title + " - " + nav.target.textContent
+        var hash = "#" + nav.target.id;
+        if (window.location.hash !== hash) {
+          history.replaceState(null, title, window.location.pathname + hash);
+        }
       }
     }
   });
