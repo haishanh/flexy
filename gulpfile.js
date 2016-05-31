@@ -4,6 +4,7 @@ const gulp = require('gulp');
 // To remove? const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const concat = require('gulp-concat');
+const autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 
 const sassSrc = 'src/scss/**/*.scss';
@@ -17,6 +18,7 @@ const pugSrc = 'src/pug/*.pug';
 gulp.task('sass', () => {
   return gulp.src(sassSrc)
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('dest'))
     .pipe(browserSync.stream());
 });

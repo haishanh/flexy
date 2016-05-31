@@ -71,6 +71,10 @@ flex container 和 flex item 都有一些 flex 相关的属性可以使用。
 }
 ```
 
+**注意：** 本页面使用了 [autoprefixer][autoprefixer]
+
+[autoprefixer]: https://github.com/postcss/autoprefixer#flexbox-filters-etc
+
 ## container属性 | container
 
 **flex container** 有以下几种 flex 属性可以使用
