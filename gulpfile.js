@@ -17,7 +17,9 @@ const pugSrc = 'src/pug/*.pug';
 
 gulp.task('sass', () => {
   return gulp.src(sassSrc)
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'expanded'
+    }).on('error', sass.logError))
     .pipe(autoprefixer())
     .pipe(gulp.dest('dest'))
     .pipe(browserSync.stream());
