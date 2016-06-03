@@ -31,7 +31,7 @@ $color-link-hover: #e42b2b;
   }
   display: flex;
   justify-content: flex-start;
-  background: rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.04);
   flex: 0 0 33%;
 }
 .right {
@@ -73,7 +73,7 @@ $color-link-hover: #e42b2b;
 
 body {
   font-family: $font-chn;
-  background: #efede4;
+  // background: #efede4;
 }
 
 footer {
