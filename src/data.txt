@@ -66,8 +66,40 @@ flex container 和 flex item 都有一些 flex 相关的属性可以使用。
 }
 
 .item {
-  background: tomato;
+  color: white;
   border: 1px solid #333;
+}
+
+.item:nth-child(1) {
+  background: #f00;
+}
+
+.item:nth-child(2) {
+  background: #a50;
+}
+
+.item:nth-child(3) {
+  background: #5a0;
+}
+
+.item:nth-child(4) {
+  background: #0f0;
+}
+
+.item:nth-child(5) {
+  background: #0a5;
+}
+
+.item:nth-child(6) {
+  background: #05a;
+}
+
+.item:nth-child(7) {
+  background: #00f;
+}
+
+.item:nth-child(8) {
+  background: #00a;
 }
 ```
 

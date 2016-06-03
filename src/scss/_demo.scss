@@ -43,8 +43,32 @@ $color-link-hover: #e42b2b;
 .item {
   //width: 40px;
   //height: 40px;
-  background: tomato;
+  color: white;
   border: 1px solid #333;
+  &:nth-child(1) {
+    background: #f00;
+  }
+  &:nth-child(2) {
+    background: #a50;
+  }
+  &:nth-child(3) {
+    background: #5a0;
+  }
+  &:nth-child(4) {
+    background: #0f0;
+  }
+  &:nth-child(5) {
+    background: #0a5;
+  }
+  &:nth-child(6) {
+    background: #05a;
+  }
+  &:nth-child(7) {
+    background: #00f;
+  }
+  &:nth-child(8) {
+    background: #00a;
+  }
 }
 
 body {
