@@ -26,7 +26,7 @@
 
 flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局，默认是横向布局。两种不同的布局方式，会决定其他 flex 属性的效果。
 
-![](https://developer.mozilla.org/files/3739/flex_terms.png)
+![](img/flex_terms.png)
 
 **main axis**: 是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 *x* 轴一致，如果采用竖向布局，则 *main axis* 与 *y* 轴一致。
 
