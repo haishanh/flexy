@@ -28,17 +28,29 @@ flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局�
 
 ![](img/flex_terms.png)
 
-**main axis**: 是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 *x* 轴一致，如果采用竖向布局，则 *main axis* 与 *y* 轴一致。
+  * **main axis**
 
-**corss axis**: 是 flex container 的交叉轴，与主轴垂直。
+    是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 *x* 轴一致，如果采用竖向布局，则 *main axis* 与 *y* 轴一致。
 
-**main-start** / **main-end**: 分别是 flex container 主轴的起始边和终点边。默认情况下，flex item 从 *main-start* 向 *main-end* 方向排列。
+  * **corss axis**
 
-**cross-start** / **cross-end**: 分别是 flex container **交叉轴**的起始边和终点边。默认情况下，flex item 在交叉轴方向上会占满 *cross-start* 和 *cross-end* 之间的空间。
+    是 flex container 的交叉轴，与主轴垂直。
 
-**main size**: 指 flex **item** 的 **宽度** 或 **高度**，如果是横向布局，则 *main size* 是指 **宽度**，如果是竖向布局，则 *main size* 是指 **高度**。
+  * **main-start** / **main-end**
 
-**cross size**: 与 *main size* 类似。如果是横向布局，则 *cross size* 指 **高度**，如果是竖向布局，则 *cross size* 是指 **宽度**。
+    分别是 flex container 主轴的起始边和终点边。默认情况下，flex item 从 *main-start* 向 *main-end* 方向排列。
+
+  * **cross-start** / **cross-end**
+
+    分别是 flex container **交叉轴**的起始边和终点边。默认情况下，flex item 在交叉轴方向上会占满 *cross-start* 和 *cross-end* 之间的空间。
+
+  * **main size**
+
+    指 flex **item** 的 **宽度** 或 **高度**，如果是横向布局，则 *main size* 是指 **宽度**，如果是竖向布局，则 *main size* 是指 **高度**。
+
+  * **cross size**
+
+    与 *main size* 类似。如果是横向布局，则 *cross size* 指 **高度**，如果是竖向布局，则 *cross size* 是指 **宽度**。
 
 flex container 和 flex item 都有一些 flex 相关的属性可以使用。
 
