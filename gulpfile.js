@@ -65,6 +65,8 @@ gulp.task('concatjs', () => {
 });
 
 gulp.task('move', () => {
+  gulp.src('src/img/*')
+    .pipe(gulp.dest('dest/img'));
   return gulp.src('src/CNAME')
     .pipe(gulp.dest('dest'));
 });
