@@ -2,17 +2,22 @@ $color-link: #1e79e0;
 $color-link-hover: #e42b2b;
 
 .description {
-  width: 700px;
+  max-width: 700px;
   margin: 0 auto;
+  padding: 0 15px;
   padding-top: 25px;
 }
 
 .compare {
-  width: 800px;
+  max-width: 800px;
   height: 300px;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
+  @media only screen and (max-width: 500px) {
+    flex-direction: column;
+    height: auto;
+  }
 }
 
 .lefthead {
@@ -88,7 +93,7 @@ footer {
 
 // intro
 .intro {
-  width: 700px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 20px 0;
   text-align: center;
@@ -111,8 +116,7 @@ h2, h3 {
   position: relative;
   .anchor {
     color: #0cc;
-    position: absolute;
-    left: -1em;
+    padding-right: 5px;
   }
 }
 
@@ -129,6 +133,7 @@ h3, h3 .anchor {
 p > img {
   display: block;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 // link
