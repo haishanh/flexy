@@ -191,6 +191,10 @@ a {
       color: #0cc;
     }
   }
+  // `left: 0` is not friendly to a large screen
+  @media only screen and (min-width: 1200px) {
+    left: calc(50% - 600px);
+  }
 }
 
 @media only screen and (min-width: 1024px) {
