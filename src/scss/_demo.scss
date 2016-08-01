@@ -85,6 +85,9 @@ footer {
   text-align: center;
   padding: 20px 0;
   color: #777;
+  span {
+    transition: color 0.7s ease;
+  }
   &:hover {
     span {
       color: red;
@@ -158,9 +161,19 @@ a {
   border-radius: 6px;
   font-weight: 300;
   padding: 10px;
+  transition: all 0.7s ease;
+  svg {
+    transition: all 0.7s ease;
+  }
   &:hover {
-    background: #fff;
-    color: #000;
+    // background: #fff;
+    background: #03A9F4;
+    // color: #000;
+    color: #fff;
+    border-color: #fff;
+    svg {
+      fill: #fff;
+    }
   }
 }
 
