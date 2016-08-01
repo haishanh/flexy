@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A CSS Flexbox tutorial in Chinese">
+    <title>CSS Flexbox</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <section class="intro"><a class="logo-link" href="/">
+        <div class="logo"><svg width="270" height="56" viewBox="0 0 270 56" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M27.104 18.864c0-.384-.048-.672-.144-.864a7.378 7.378 0 0 0-2.496-2.52c-1.024-.624-2.112-.936-3.264-.936-1.088 0-2.112.28-3.072.84-.96.56-1.808 1.376-2.544 2.448s-1.312 2.376-1.728 3.912c-.416 1.536-.624 3.28-.624 5.232 0 1.888.208 3.608.624 5.16.416 1.552 1 2.88 1.752 3.984s1.632 1.96 2.64 2.568a6.166 6.166 0 0 0 3.24.912c1.184 0 2.328-.328 3.432-.984a7.586 7.586 0 0 0 2.664-2.664l2.496 1.632a9.237 9.237 0 0 1-1.728 2.112 11.425 11.425 0 0 1-2.136 1.536 10.38 10.38 0 0 1-2.256.936 8.516 8.516 0 0 1-2.28.312c-1.728 0-3.256-.296-4.584-.888-1.328-.592-2.544-1.512-3.648-2.76-1.104-1.248-1.96-2.832-2.568-4.752-.608-1.92-.912-4.208-.912-6.864 0-2.944.352-5.4 1.056-7.368.704-1.968 1.632-3.544 2.784-4.728 1.152-1.184 2.376-2.024 3.672-2.52 1.296-.496 2.552-.744 3.768-.744.992 0 1.96.144 2.904.432a10.96 10.96 0 0 1 2.64 1.2 10.064 10.064 0 0 1 2.184 1.848 8.9 8.9 0 0 1 1.536 2.424l-3.216 1.584c-.128-.096-.192-.256-.192-.48zm25.776-3.216l-2.112 2.88c-.16-.064-.248-.2-.264-.408-.016-.208-.056-.36-.12-.456-.608-.896-1.432-1.616-2.472-2.16s-2.328-.816-3.864-.816c-1.472 0-2.696.432-3.672 1.296-.976.864-1.464 1.888-1.464 3.072 0 .704.12 1.312.36 1.824s.608 1.008 1.104 1.488c.496.48 1.224.968 2.184 1.464.96.496 2.208 1.048 3.744 1.656 1.472.608 2.688 1.208 3.648 1.8.96.592 1.728 1.224 2.304 1.896.576.672.984 1.384 1.224 2.136.24.752.36 1.592.36 2.52a8.891 8.891 0 0 1-.576 3.096 7.653 7.653 0 0 1-1.8 2.784c-.816.816-1.848 1.48-3.096 1.992s-2.752.768-4.512.768c-3.872 0-6.992-1.28-9.36-3.84l1.968-3.456c.16.096.24.256.24.48 0 .224.048.4.144.528.736.928 1.728 1.704 2.976 2.328 1.248.624 2.752.936 4.512.936.896 0 1.72-.152 2.472-.456a6.428 6.428 0 0 0 1.944-1.2 5.533 5.533 0 0 0 1.296-1.776c.32-.688.48-1.416.48-2.184 0-.608-.104-1.16-.312-1.656-.208-.496-.552-.96-1.032-1.392-.48-.432-1.16-.864-2.04-1.296-.88-.432-2.04-.936-3.48-1.512-1.568-.608-2.872-1.224-3.912-1.848-1.04-.624-1.88-1.256-2.52-1.896-.64-.64-1.096-1.328-1.368-2.064a6.871 6.871 0 0 1-.408-2.4c0-1.088.232-2.112.696-3.072a7.943 7.943 0 0 1 1.92-2.52c.816-.72 1.784-1.28 2.904-1.68 1.12-.4 2.32-.6 3.6-.6 1.632 0 3.168.328 4.608.984a10.681 10.681 0 0 1 3.696 2.76zm24 0l-2.112 2.88c-.16-.064-.248-.2-.264-.408-.016-.208-.056-.36-.12-.456-.608-.896-1.432-1.616-2.472-2.16s-2.328-.816-3.864-.816c-1.472 0-2.696.432-3.672 1.296-.976.864-1.464 1.888-1.464 3.072 0 .704.12 1.312.36 1.824s.608 1.008 1.104 1.488c.496.48 1.224.968 2.184 1.464.96.496 2.208 1.048 3.744 1.656 1.472.608 2.688 1.208 3.648 1.8.96.592 1.728 1.224 2.304 1.896.576.672.984 1.384 1.224 2.136.24.752.36 1.592.36 2.52a8.891 8.891 0 0 1-.576 3.096 7.653 7.653 0 0 1-1.8 2.784c-.816.816-1.848 1.48-3.096 1.992s-2.752.768-4.512.768c-3.872 0-6.992-1.28-9.36-3.84l1.968-3.456c.16.096.24.256.24.48 0 .224.048.4.144.528.736.928 1.728 1.704 2.976 2.328 1.248.624 2.752.936 4.512.936.896 0 1.72-.152 2.472-.456a6.428 6.428 0 0 0 1.944-1.2 5.533 5.533 0 0 0 1.296-1.776c.32-.688.48-1.416.48-2.184 0-.608-.104-1.16-.312-1.656-.208-.496-.552-.96-1.032-1.392-.48-.432-1.16-.864-2.04-1.296-.88-.432-2.04-.936-3.48-1.512-1.568-.608-2.872-1.224-3.912-1.848-1.04-.624-1.88-1.256-2.52-1.896-.64-.64-1.096-1.328-1.368-2.064a6.871 6.871 0 0 1-.408-2.4c0-1.088.232-2.112.696-3.072a7.943 7.943 0 0 1 1.92-2.52c.816-.72 1.784-1.28 2.904-1.68 1.12-.4 2.32-.6 3.6-.6 1.632 0 3.168.328 4.608.984a10.681 10.681 0 0 1 3.696 2.76z" fill="#4990E2"/><path d="M94.744 12.048h17.232v2.928H98.104v9.408h11.184v2.928H98.104V42h-3.36V12.048zm24.336-1.968h9.696v29.136h6.432V42h-16.416v-2.784h6.48V12.864h-6.192V10.08zm32.352 9.456c1.152 0 2.272.208 3.36.624a7.771 7.771 0 0 1 2.856 1.896c.816.848 1.472 1.928 1.968 3.24.496 1.312.744 2.864.744 4.656a13.495 13.495 0 0 1-.096 1.584h-15.6c.064 1.536.328 2.824.792 3.864s1.048 1.88 1.752 2.52a6.266 6.266 0 0 0 2.352 1.368 8.59 8.59 0 0 0 2.592.408c2.272 0 4.16-.816 5.664-2.448l1.92 1.872c-1.856 2.24-4.416 3.36-7.68 3.36-1.6 0-3.064-.248-4.392-.744-1.328-.496-2.456-1.224-3.384-2.184-.928-.96-1.648-2.152-2.16-3.576-.512-1.424-.768-3.048-.768-4.872 0-1.856.264-3.504.792-4.944s1.248-2.648 2.16-3.624a9.224 9.224 0 0 1 3.192-2.232c1.216-.512 2.528-.768 3.936-.768zm-6.624 9.312h12.048c0-.128.008-.248.024-.36.016-.112.024-.248.024-.408 0-.8-.152-1.56-.456-2.28a6.024 6.024 0 0 0-1.224-1.872 6.016 6.016 0 0 0-1.8-1.272 5.227 5.227 0 0 0-2.232-.48c-1.504 0-2.864.536-4.08 1.608-1.216 1.072-1.984 2.76-2.304 5.064zm35.568-8.784h3.552l-7.104 10.656L184.888 42h-3.936l-6.048-8.544L169.192 42h-3.936l7.728-11.136-7.584-10.8h3.792l5.712 8.112 5.472-8.112zm9.504-9.984h4.032v.096c0 .16-.088.312-.264.456-.176.144-.264.312-.264.504v12.288a7.943 7.943 0 0 1 2.856-2.832c1.2-.704 2.424-1.056 3.672-1.056 1.216 0 2.368.232 3.456.696 1.088.464 2.048 1.168 2.88 2.112.832.944 1.488 2.12 1.968 3.528s.72 3.056.72 4.944c0 1.984-.264 3.704-.792 5.16s-1.224 2.672-2.088 3.648c-.864.976-1.84 1.704-2.928 2.184a8.243 8.243 0 0 1-3.36.72c-1.344 0-2.576-.304-3.696-.912a8.01 8.01 0 0 1-2.784-2.496l-1.2 2.88h-2.208V10.08zm6 28.56c.608.32 1.152.536 1.632.648.48.112.928.168 1.344.168.64 0 1.344-.12 2.112-.36s1.48-.664 2.136-1.272c.656-.608 1.2-1.424 1.632-2.448.432-1.024.648-2.32.648-3.888 0-2.912-.592-5.136-1.776-6.672-1.184-1.536-2.896-2.304-5.136-2.304-.8 0-1.648.288-2.544.864a5.096 5.096 0 0 0-1.968 2.304c-.384.96-.576 2.528-.576 4.704 0 1.344.032 2.48.096 3.408.064.928.192 1.704.384 2.328.192.624.448 1.128.768 1.512.32.384.736.72 1.248 1.008zm27.312-19.056a9.37 9.37 0 0 1 3.816.792 9.177 9.177 0 0 1 3.144 2.28c.896.992 1.608 2.2 2.136 3.624s.792 3.016.792 4.776c0 1.792-.256 3.392-.768 4.8s-1.216 2.616-2.112 3.624a8.982 8.982 0 0 1-3.168 2.304 9.656 9.656 0 0 1-3.888.792 9.234 9.234 0 0 1-3.96-.864 10.287 10.287 0 0 1-3.24-2.376c-.928-1.008-1.664-2.216-2.208-3.624-.544-1.408-.816-2.928-.816-4.56 0-1.632.28-3.168.84-4.608.56-1.44 1.312-2.664 2.256-3.672a10.817 10.817 0 0 1 3.288-2.4 8.97 8.97 0 0 1 3.888-.888zm6.432 11.568c0-1.376-.184-2.6-.552-3.672-.368-1.072-.856-1.976-1.464-2.712-.608-.736-1.304-1.296-2.088-1.68a5.55 5.55 0 0 0-2.472-.576 5.55 5.55 0 0 0-2.472.576c-.784.384-1.472.944-2.064 1.68-.592.736-1.064 1.624-1.416 2.664-.352 1.04-.528 2.216-.528 3.528 0 1.28.176 2.448.528 3.504.352 1.056.824 1.968 1.416 2.736a6.29 6.29 0 0 0 2.088 1.776c.8.416 1.648.624 2.544.624.896 0 1.736-.184 2.52-.552a5.912 5.912 0 0 0 2.064-1.632c.592-.72 1.056-1.608 1.392-2.664.336-1.056.504-2.256.504-3.6zm22.752-11.088h3.552l-7.104 10.656L256.888 42h-3.936l-6.048-8.544L241.192 42h-3.936l7.728-11.136-7.584-10.8h3.792l5.712 8.112 5.472-8.112z" fill="#EF4E4E"/></g></svg>
+
+        </div></a><a class="forkme" href="https://github.com/haishanh/flexy"><svg aria-hidden="true" class="octicon octicon-mark-github" height="28" version="1.1" viewBox="0 0 16 16" width="28"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>Fork me on Github</a></section>
+    <main>
+      <div class="toc"><ul class="top-level"><li><a name="basic-concept" href="#basic-concept">基本概念</a></li></ul><ul class="top-level"><li><a name="container" href="#container">container属性</a><ul><li><a name="flex-direction" href="#flex-direction">flex-direction</a></li><li><a name="flex-wrap" href="#flex-wrap">flex-wrap</a></li><li><a name="flex-flow" href="#flex-flow">flex-flow</a></li><li><a name="justify-content" href="#justify-content">justify-content</a></li><li><a name="align-items" href="#align-items">align-items</a></li><li><a name="align-content" href="#align-content">align-content</a></li></ul></li></ul></li></ul><ul class="top-level"><li><a name="item" href="#item">item属性</a><ul><li><a name="order" href="#order">order</a></li><li><a name="flex-grow" href="#flex-grow">flex-grow</a></li><li><a name="flex-shrink" href="#flex-shrink">flex-shrink</a></li><li><a name="flex-basis" href="#flex-basis">flex-basis</a></li><li><a name="flex" href="#flex">flex</a></li><li><a name="align-self" href="#align-self">align-self</a></li></ul></li></ul></li></ul></li></ul></li></ul></div>
+      <article>
+        <div class="description"><p>关于 flexbox，网上有着非常多的文章。比如：</p>
+<ul>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></li>
+<li><a href="https://davidwalsh.name/flexbox-dice">Getting Dicey With Flexbox</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">Flex 布局教程：语法篇</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex 布局教程：实例篇</a></li>
+</ul>
+<p>那为什么我还要写呢，因为 flexbox 真的很有用很好用啊 :)</p>
+<p>有疑问的时候可以查一下 flexbox 的<a href="https://drafts.csswg.org/css-flexbox-1/">草案</a>，或者<a href="https://twitter.com/carlhan">找我</a>交流啊。</p>
+<h2 id="basic-concept"><a name="basic-concept" class="anchor" href="#basic-concept">#</a>基本概念</h2><p>采用 flex 布局的元素为 <strong>flex container</strong>(也叫做 flexbox)，其中的所有子元素为 <strong>flex item</strong>。</p>
+<p>将元素的 <code>display</code> 属性设置为<code>flex</code> 或者为 <code>inline-flex</code> 就可以将一个元素设置成 flex container，其中子元素也就自动变成 flex item 了。（如果是设置成 <code>flex</code> 这个 container 就是 block 级别的，如果是 <code>inline-flex</code> 则是 inline 级别的。）</p>
+<p>flex 布局时，可以指明是横向(row)布局，还是竖向(column)布局，默认是横向布局。两种不同的布局方式，会决定其他 flex 属性的效果。</p>
+<p><img src="img/flex_terms.png" alt=""></p>
+<ul>
+<li><p><strong>main axis</strong></p>
+<p>是 flex container 的主轴，其方向与 flex 布局方向一致。就是说，如果采用横向布局，则 main axis 与 CSS 坐标系的 <em>x</em> 轴一致，如果采用竖向布局，则 <em>main axis</em> 与 <em>y</em> 轴一致。</p>
+</li>
+<li><p><strong>corss axis</strong></p>
+<p>是 flex container 的交叉轴，与主轴垂直。</p>
+</li>
+<li><p><strong>main-start</strong> / <strong>main-end</strong></p>
+<p>分别是 flex container 主轴的起始边和终点边。默认情况下，flex item 从 <em>main-start</em> 向 <em>main-end</em> 方向排列。</p>
+</li>
+<li><p><strong>cross-start</strong> / <strong>cross-end</strong></p>
+<p>分别是 flex container <strong>交叉轴</strong>的起始边和终点边。默认情况下，flex item 在交叉轴方向上会占满 <em>cross-start</em> 和 <em>cross-end</em> 之间的空间。</p>
+</li>
+<li><p><strong>main size</strong></p>
+<p>指 flex <strong>item</strong> 的 <strong>宽度</strong> 或 <strong>高度</strong>，如果是横向布局，则 <em>main size</em> 是指 <strong>宽度</strong>，如果是竖向布局，则 <em>main size</em> 是指 <strong>高度</strong>。</p>
+</li>
+<li><p><strong>cross size</strong></p>
+<p>与 <em>main size</em> 类似。如果是横向布局，则 <em>cross size</em> 指 <strong>高度</strong>，如果是竖向布局，则 <em>cross size</em> 是指 <strong>宽度</strong>。</p>
+</li>
+</ul>
+<p>flex container 和 flex item 都有一些 flex 相关的属性可以使用。</p>
+<p>需要说明的是，本文所有例子中右侧的 demo 区域，都已经使用了以下 html 结构：</p>
+<pre><code class="lang-html">&lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"container"</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">1</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">2</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">3</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">4</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">5</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">6</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">7</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+  &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"item"</span>&gt;<span class="hljs-number">8</span>&lt;/<span class="hljs-keyword">div</span>&gt;
+&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre>
+<p>并且使用了以下 style:</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#70F770</span>;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#333</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(1)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#f00</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(2)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#a50</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#5a0</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(4)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f0</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(5)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0a5</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(6)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#05a</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(7)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#00f</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(8)</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#00a</span>;
+}
+</code></pre>
+<p><strong>注意：</strong> 本页面使用了 <a href="https://github.com/postcss/autoprefixer#flexbox-filters-etc">autoprefixer</a></p>
+<h2 id="container"><a name="container" class="anchor" href="#container">#</a>container属性</h2><p><strong>flex container</strong> 有以下几种 flex 属性可以使用</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+<p>下面会对每个属性进行说明，并给出例子。</p>
+<h3 id="flex-direction"><a name="flex-direction" class="anchor" href="#flex-direction">#</a>flex-direction</h3><p><code>flex-direction</code> 决定布局方向，也就是 <em>main axis</em> 的方向。</p>
+<p>可使用以下几个值：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row | row-reverse | column | column-reverse;
+}
+</code></pre>
+<p><code>flex-direction: row</code> 为横向布局，该值为默认值。下面的例子中可以看到，这8个 item 是横向排开的。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+}</pre>
+          </div>
+          <div class="right container flex-direction-row">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>flex-direction: row-reverse</code> 为横向布局，但其中的 flex item 会反方向铺展开，起点也是从最右侧(<strong>main end</strong>)开始。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row-reverse;
+}</pre>
+          </div>
+          <div class="right container flex-direction-row-reverse">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>column</code> 为竖向布局</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column;
+}</pre>
+          </div>
+          <div class="right container flex-direction-column">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>column-reverse</code> 竖向布局。与 <code>row-reverse</code> 类似，其中的 flex item 也会发反方向铺展开来，起点在下侧(<strong>main end</strong>)。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column-reverse;
+}</pre>
+          </div>
+          <div class="right container flex-direction-column-reverse">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex-wrap"><a name="flex-wrap" class="anchor" href="#flex-wrap">#</a>flex-wrap</h3><p>当 container 的 <em>main axis</em> 上排不下所有的 flex item 时怎么办呢？ 属性 <code>flex-wrap</code> 就是来解决这个问题的，这个属性可以用来决定排不下的 item 是不是要换行或者换列。其可用值如下：</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-wrap</span>: nowrap | wrap | wrap-reverse;
+}
+</code></pre>
+<p><code>nowrap</code> 为默认值，表示不换行。(如果是采用竖向布局，则表示不换列 :)</p>
+<p>如果 <code>item</code> 在主轴上排不下，比如下面的例子中，container 使用了 <code>column</code> 方向排序，内部的所有 item 因为 <code>min-height</code> 设置为 <code>40px</code>了，所有 item 的高度加在一起已经超过了 containter 的可用高度了。但是因为 <code>flex-wrap</code> 的值为 <code>nowrap</code> 所以并不会换列。</p>
+<p><strong>注意：</strong>下面的例子中，<code>flex-directin: column</code>，所以采用的是竖向布局，就是说 <em>main axis</em> 会是 <em>y</em> 方向。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">flex-wrap</span>: nowrap;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>;
+}</pre>
+          </div>
+          <div class="right container flex-wrap-nowrap">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>flex-wrap</code>的值 是 <code>wrap</code> 时， 如果所有 item 不能在主轴上一行或者一列排开，则会换行或者换列。</p>
+<p>下面的例子中，采用竖向布局，主轴在垂直方向。因为 item 的 <code>min-height</code> 设为 <code>40px</code>，所以这些 item 并不能在一列排下。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>;
+}</pre>
+          </div>
+          <div class="right container flex-wrap-wrap">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>wrap-reverse</code> 时，行为会与值为 <code>wrap</code> 时一样。但是排列时，值为 <code>wrap</code> 排列会从交叉轴(<em>corss axis</em>)的 <em>cross start</em> 开始，而值为 <code>wrap-reverse</code> 时，排列会从交叉轴的 <em>cross end</em> 开始</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: column;
+  <span class="hljs-attribute">flex-wrap</span>: wrap-reverse;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>;
+}</pre>
+          </div>
+          <div class="right container flex-wrap-wrap-reverse">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex-flow"><a name="flex-flow" class="anchor" href="#flex-flow">#</a>flex-flow</h3><p><code>flex-flow</code> 属性是 <code>flex-direction</code> 属性和 <code>flex-wrap</code> 属性的简写形式，默认值为 <code>row nowrap</code></p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-flow</span>: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}
+</code></pre>
+<h3 id="justify-content"><a name="justify-content" class="anchor" href="#justify-content">#</a>justify-content</h3><p><code>justify-content</code> 用于描述 flex item 及其之间的&quot;空闲空间&quot;在 container <strong>主轴</strong>上的对齐方式。</p>
+<pre><code class="lang-css">.container {
+  justify-content: flex-start | flex-<span class="hljs-keyword">end</span> | center | <span class="hljs-literal">space</span>-<span class="hljs-keyword">between</span> | <span class="hljs-literal">space</span>-<span class="hljs-keyword">around</span>;
+}
+</code></pre>
+<p><code>flex-start</code> 是默认值，表示 container 中的内容会分布在主轴的起始位置。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: flex-start;
+}</pre>
+          </div>
+          <div class="right container justify-content-flex-start">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>flex-end</code> 则表示 container 中的内容会分布在主轴的末尾位置。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: flex-end;
+}</pre>
+          </div>
+          <div class="right container justify-content-flex-end">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>center</code> 则表示 container 中的内容在主轴上居中。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: center;
+}</pre>
+          </div>
+          <div class="right container justify-content-center">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>space-between</code> 则表示 container 中主轴上的所有“空闲空间”会均匀分布到 item <strong>之间</strong>。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: space-between;
+}</pre>
+          </div>
+          <div class="right container justify-content-space-between">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>space-around</code> 则表示 container 中主轴上的所有“空闲空间”会均匀分布到 item 的<strong>两侧</strong>。</p>
+<p>下面的例子中，1的左边有“一份”空间，右边也有“一份”空间。2的左边和右边也同样有“一份”空间，所以可以看到1左边有“一份”空关键，而1和2之间是有“两份”的。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">justify-content</span>: space-around;
+}</pre>
+          </div>
+          <div class="right container justify-content-space-around">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="align-items"><a name="align-items" class="anchor" href="#align-items">#</a>align-items</h3><p><code>align-items</code> 属性决定 container 中的 item 在 <strong>交叉轴cross axis</strong> 上是如何分布的。</p>
+<p>可用值：</p>
+<pre><code class="lang-css">.container {
+  align-items: flex-start | <span class="hljs-type">flex</span>-<span class="hljs-keyword">end</span> | <span class="hljs-type">center</span> | <span class="hljs-type">baseline</span> | <span class="hljs-type">stretch</span>;
+}
+</code></pre>
+<p><code>flex-start</code>表示对其到 交叉轴 croass axis 的起始边(<strong>cross start</strong>)。</p>
+<p>下面的例子没有指定<code>flex-direction</code>，所以默认为横向布局。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: flex-start;
+}</pre>
+          </div>
+          <div class="right container align-items-flex-start">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>flex-end</code>表示对其到 交叉轴croass axis 的终点边(<strong>cross end</strong>)。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: flex-end;
+}</pre>
+          </div>
+          <div class="right container align-items-flex-end">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>center</code>表示对其到 交叉轴croass axis 的中线。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: center;
+}</pre>
+          </div>
+          <div class="right container align-items-center">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>baseline</code>表示按照 item 中文字的基线对齐。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: baseline;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(2n+1)</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">28px</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(4)</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">50px</span>;
+}</pre>
+          </div>
+          <div class="right container align-items-baseline">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>stretch</code> 是默认值，如果 item 的 <em>cross size</em> (横向布局时，即高度)没指明的话， item 会伸展开来，<em>cross axis</em> 方向填满。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">align-items</span>: stretch;
+}</pre>
+          </div>
+          <div class="right container align-items-stretch">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="align-content"><a name="align-content" class="anchor" href="#align-content">#</a>align-content</h3><p><code>align-content</code> 这个属性只有在 item 排成多行(<code>flex-direction</code> 是横向)或者多列(<code>flex-direction</code> 是竖向)的时候才生效。它决定这多行/多列的 item 整体上在 cross axis 上的分布方式。</p>
+<p>可用值：</p>
+<pre><code class="lang-css">.container {
+  align-content: flex-start | <span class="hljs-type">flex</span>-<span class="hljs-keyword">end</span> | <span class="hljs-type">center</span> | <span class="hljs-type">space</span>-between | <span class="hljs-type">space</span>-around | <span class="hljs-type">stretch</span>;
+}
+</code></pre>
+<p><code>flex-start</code> 表示所有 item 整体上分布在 <em>cross axis</em> 的起始位置(cross start)</p>
+<p>下面的例子中，因为 item 设置了 <code>min-width</code>， container 上 <code>flex-wrap</code> 设置为 <code>wrap</code> 所以会换行。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: flex-start;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-flex-start">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>flex-end</code> 表示所有 item 整体上分布在 <em>cross axis</em> 的末尾位置(cross end)</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: flex-end;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-flex-end">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>center</code> 表示所有 item 整体上在 <em>cross axis</em> 的中线上对齐</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: center;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-center">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>space-between</code> 表示所有每行/每列之间空间均匀分布。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: space-between;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-space-between">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>space-around</code> 表示所有每行/每列两边的空间均匀分布。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: space-around;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-space-around">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p><code>stretch</code> 是默认值， 表示<strong>每</strong>行/列都将会自由拉伸开，cross axis 上占用整个空间。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex-direction</span>: row;
+  <span class="hljs-attribute">flex-wrap</span>: wrap;
+  <span class="hljs-attribute">align-content</span>: stretch;
+}
+
+<span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">85px</span>;
+}</pre>
+          </div>
+          <div class="right container align-content-stretch">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h2 id="item"><a name="item" class="anchor" href="#item">#</a>item属性</h2><p>flexbox 中的 item 也有着相关的 flex 属性。</p>
+<ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+<h3 id="order"><a name="order" class="anchor" href="#order">#</a>order</h3><p>默认情况下，flex item 在 container 中分布时会按照 html 代码中的顺序。但我们也可以使用 <code>order</code> 属性来控制 item 的分布顺序。</p>
+<p><code>order</code> 的值是一个整数。初始默认值是<code>0</code>,值越小，就会排的越靠前，这个值也可以是负值。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">order</span>: &lt;integer&gt;; <span class="hljs-comment">/* default 0 */</span>
+}
+</code></pre>
+<p>注意观察下面例子中 item 的顺序。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(2n)</span> {
+  <span class="hljs-attribute">order</span>: -<span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(5)</span> {
+  <span class="hljs-attribute">order</span>: <span class="hljs-number">3</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">order</span>: <span class="hljs-number">99</span>;
+}</pre>
+          </div>
+          <div class="right container order">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex-grow"><a name="flex-grow" class="anchor" href="#flex-grow">#</a>flex-grow</h3><p><code>flex-grow</code> 属性决定这个 item 所占空间比例</p>
+<p>其值是一个不小于0的数字，注意该值并不是作为百分比来解释。默认值是<code>0</code>。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-grow</span>: &lt;number&gt;; <span class="hljs-comment">/* default 0 */</span>
+}
+</code></pre>
+<p><strong><code>flex-grow</code> 是如何工作的？</strong> flexbox 中的 item 在 <em>main axis</em> 上的尺寸首先由其 <code>flex-basis</code> 属性(该属性后面会进行描述)决定，假设这时 <em>main axis</em> 上还有“空闲空间”的话，就把这些空间分给使用了 <code>flex-grow</code> 属性的那些 item，<code>flex-grow</code> 的值就是它们额外可以拿到的空间的<strong>份数</strong>。</p>
+<p>假设只有一个 item 使用了 <code>flex-grow</code> 属性，则其值是 <code>1</code> 还是 <code>100</code>，其结果会是一样的，因为只有这一个 item 去分多余的“空闲空间”。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(1)</span> {
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(5)</span> {
+  <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">4</span>;
+}</pre>
+          </div>
+          <div class="right container flex-grow">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex-shrink"><a name="flex-shrink" class="anchor" href="#flex-shrink">#</a>flex-shrink</h3><p><code>flex-shrink</code> 属性决定空间不足时这个 item 收缩的比例，默认值是1。</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-shrink</span>: &lt;number&gt;; <span class="hljs-comment">/* default 1 */</span>
+}
+</code></pre>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.item</span> {
+  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">190px</span>;
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(5)</span> {
+  <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">0</span>;
+}</pre>
+          </div>
+          <div class="right container flex-shrink">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex-basis"><a name="flex-basis" class="anchor" href="#flex-basis">#</a>flex-basis</h3><p><code>flex-basis</code> 表示<strong>在分配空闲空间之前</strong> item 的 main size 的初始大小。</p>
+<p>它可以使用与 <code>width</code>/<code>height</code> 属性相同的值，比如<code>20px</code>, <code>30%</code>, <code>4em</code> 等。除此之外，还有一个值 <code>content</code>， 表示尺寸基于 item 的内容, 相当与<code>width: auto; flex-basis: auto;</code>。</p>
+<p>默认值是 <code>auto</code>，表示 如果该 item 定义了 main size 尺寸则使用该尺寸，如果没有，则基于其内容。</p>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(2)</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">flex-basis</span>: auto;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(4)</span> {
+  <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">20%</span>;
+}</pre>
+          </div>
+          <div class="right container flex-basis">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><h3 id="flex"><a name="flex" class="anchor" href="#flex">#</a>flex</h3><p><code>flex</code> 是 <code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basis</code> 三个属性的简写形式。</p>
+<p>常见值：</p>
+<p><code>initial</code></p>
+<p>等价于 <code>0 1 auto</code>。 item 的大小会遵守其 <code>width</code>/<code>height</code> 属性，如果 mian size 计算出来的是 <code>auto</code>，则 item 的大小是由其内容决定的。如果 container 仍然有可用空间，item 并不会伸展。但如果 container 的空间不足， item 会尽可能的缩小。</p>
+<p><code>auto</code></p>
+<p>等价于 <code>1 1 auto</code>。item 的大小会遵守其 <code>width</code>/<code>height</code> 属性，但该 item 可以伸展。假设 container 中所有的 item 使用都是 <code>flex: auto</code>, <code>flex: initial</code> 或者 <code>flex: none</code>，当所有 item 的尺寸计算完毕以后，空余的空间会被平均分配给属性 <code>flex: auto</code> 的 item。</p>
+<p><code>none</code></p>
+<p>等价与 <code>0 0 auto</code>。item 的大小会遵守其 <code>width</code>/<code>height</code> 属性，但不会有伸缩性。</p>
+<p><code>flex: &lt;positive-number&gt;</code></p>
+<p>等价与 <code>flex: &lt;positive-number&gt; 1 0</code>。该 item 会完全按照指定的比例去使用空闲空间。</p>
+<h3 id="align-self"><a name="align-self" class="anchor" href="#align-self">#</a>align-self</h3><p><code>align-self</code> 属性可以用来设置该 item 在 cross axis 上的对齐方式，用来覆盖在 flex container 上的相关属性设置。</p>
+<p>其可用值与 <em>container</em> 上 <code>align-items</code> 的值一致。</p>
+<pre><code class="lang-css">.item {
+  align-self: <span class="hljs-built_in">auto</span> | <span class="hljs-type">flex</span>-start | <span class="hljs-type">flex</span>-<span class="hljs-keyword">end</span> | <span class="hljs-type">center</span> | <span class="hljs-type">baseline</span> | <span class="hljs-type">stretch</span>;
+}
+</code></pre>
+</div>
+        <div class="compare">
+          <div class="left">
+            <pre><span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(2)</span> {
+  <span class="hljs-attribute">align-self</span>: flex-end;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(3)</span> {
+  <span class="hljs-attribute">align-self</span>: center;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(7)</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">align-self</span>: baseline;
+}
+
+<span class="hljs-selector-class">.item</span><span class="hljs-selector-pseudo">:nth-child(8)</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">25px</span>;
+  <span class="hljs-attribute">align-self</span>: baseline;
+}</pre>
+          </div>
+          <div class="right container align-self">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+          </div>
+        </div>
+        <div class="description"><p>以上就是所有内容了，怎么样，会用了没。</p>
+</div>
+      </article>
+    </main>
+    <script src="app.js"></script>
+    <footer>
+      <p>Made with <span>love</span> by <a href="http://hanhaishan.com">haishanh</a></p>
+    </footer>
+  </body>
+</html>
