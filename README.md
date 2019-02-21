@@ -15,4 +15,4 @@ gulp build # checkout directory `dest`
 ```
 
 
-[demo]: http://flex.hanhaishan.com
+[demo]: http://flex.haishan.me
